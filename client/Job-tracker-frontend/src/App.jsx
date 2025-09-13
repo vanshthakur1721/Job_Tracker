@@ -2,15 +2,25 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import { Routes,Route } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const isAuthenticated = !!localStorage.getItem('token')
+
+
+
   return (
     <>
-     <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold text-blue-600">Hello Tailwind 🚀</h1>
-    </div>
+   <Routes>
+    //public Routes
+    <Route path = "/login" element = {<Login/>}/>
+    <Route path = "/register" element = {<Register/>}/>
+   </Routes>
+   
     </>
   )
 }
