@@ -2,20 +2,25 @@
  import dotenv from "dotenv";
  import connectDb from './src/Db/db.js';
  import authRoutes from './src/Routes/authRoutes.js'
+ import jobRoutes from './src/Routes/jobRoutes.js'
  import cors from 'cors'
-dotenv.config();
+ dotenv.config();
  const app = express()
-const port = 3000
-app.use(express.json());
-connectDb();
+ const port = 3000
+ app.use(express.json());
+ connectDb();
 
-app.get('/', (req, res) => {
+ app.get('/', (req, res) => {
   res.send('Hello World these side vansh!')
 })
-app.use(cors({
+ app.use(cors({
   origin: "http://localhost:5173", // frontend URL
-  credentials: true
+  credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"]
+
 }));
+
+app.use('/api/v1/job',jobRoutes)
 
 app.use('/api/v1/auth',authRoutes);
 
