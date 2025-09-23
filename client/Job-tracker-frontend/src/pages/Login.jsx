@@ -24,7 +24,6 @@ try{
     const {data} = await API.post('/v1/auth/login',formData)
     console.log("login data:" ,data)
     localStorage.setItem("token",data.token)
-    alert("Login Succesfull")
     navigate('/home')
     console.log(data);
 }catch(err){
