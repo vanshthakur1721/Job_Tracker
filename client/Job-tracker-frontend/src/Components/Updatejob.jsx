@@ -136,7 +136,7 @@ export default function Updatejob() {
           )
           console.log(data)
           alert(data.message)
-          alert('Job application updated successfully!');
+          navigate("/home")
 
       } catch (error) {
         console.log(error)
